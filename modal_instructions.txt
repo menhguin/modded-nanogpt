@@ -1,0 +1,41 @@
+Here are the complete instructions from the image for creating your first Modal app:
+
+1. Download and configure the Python client
+Run these commands to install the Python library locally:
+```bash
+$ pip install modal
+$ python3 -m modal setup
+```
+
+The first command installs the Modal client library and its dependencies.
+The second command creates an API token by authenticating through your web browser. It will open a new tab, which you can close when done.
+
+2. Run some code
+You're ready to run some code! Here's a minimal script that computes the square of 42:
+
+```python
+import modal
+
+app = modal.App("example-get-started")
+
+@app.function()
+def square(x):
+    print("This code is running on a remote worker!")
+    return x**2
+
+@app.local_entrypoint()
+def main():
+    print("the square is", square.remote(42))
+```
+
+Save the code to a local file:
+```bash
+$ cat > get_started.py # At the prompt, paste the snippet and Ctrl-D to save i
+```
+
+Now run it:
+```bash
+$ modal run get_started.py
+```
+
+Congratulations, you successfully executed a function on a remote worker!
